@@ -107,7 +107,7 @@ defmodule Day2_2 do
     if diff <= -1 and diff >= -3 do
       increasing?({head, ih}, tail)
     else
-      [{a, ia}, {head, ih}]
+      [ia, ih]
     end
   end
 
@@ -135,7 +135,7 @@ defmodule Day2_2 do
     if diff >= 1 and diff <= 3 do
       decreasing?({head, ih}, tail)
     else
-      [{a, ia}, {head, ih}]
+      [ia, ih]
     end
   end
 
@@ -153,10 +153,10 @@ defmodule Day2_2 do
       !is_list(decr) -> true
       failed -> false
       true ->
-        reportSafe?(List.delete_at(list, elem(hd(incr), 1)), true) or
-        reportSafe?(List.delete_at(list, elem(List.first(tl(incr)), 1)), true) or
-        reportSafe?(List.delete_at(list, elem(hd(decr), 1)), true) or
-        reportSafe?(List.delete_at(list, elem(List.first(tl(decr)), 1)), true)
+        reportSafe?(List.delete_at(list, List.first(incr)), true) or
+        reportSafe?(List.delete_at(list, List.last(incr)), true) or
+        reportSafe?(List.delete_at(list, List.first(decr)), true) or
+        reportSafe?(List.delete_at(list, List.last(decr)), true)
     end
   end
 end
